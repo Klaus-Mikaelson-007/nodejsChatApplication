@@ -1,0 +1,54 @@
+.container.bg-light.shadow.card{
+    height: 79vh;
+}
+
+.chat{
+    overflow-y: auto;
+    height: 85vh;
+    padding: 1% 1%;
+}
+
+.you{
+    border-radius: 16px;
+    width: fit-content;
+    max-width: 30vw;
+    margin: 3px;
+}
+
+.message{
+    padding: 5px 0;
+}
+
+.join{
+    color: #265974;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 3px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+::-webkit-scrollbar-thumb {
+    background: #2d849e; 
+    border-radius: 10px;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.281)!important;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #174958; 
+  }
