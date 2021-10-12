@@ -19,29 +19,25 @@ nameForm.addEventListener('submit', event => {
     
     socket.emit('new-user', username.value);
     socket.emit('contact', contact.value);
+
     const welcome = document.createElement('div');
-    welcome.classList.add('text-center')
-    welcome.classList.add('join')
+    welcome.classList.add('text-center', 'join')
     welcome.innerText = "You Joined";
+    
     chatPanel.appendChild(welcome);
 
     document.querySelector("#submit").disabled = false;
-
 })
 
 socket.on('chat', data => {
 
     const div = document.createElement('div');
-    div.classList.add('row')
-    div.classList.add('ms-0')
-    div.classList.add('me-0')
+    div.classList.add('row','ms-0','me-0')
     div.innerHTML = `
-
     <div class="me-auto card you shadow">
     <span class="message">${data.message}</span>
     </div>
     `;
-    
     chatPanel.appendChild(div);
 
 })
@@ -50,13 +46,12 @@ socket.on('chat', data => {
 chat.addEventListener('submit', event => {
     event.preventDefault();
 
-    if (message.value.length > 1000) {
+    if (message.value.length > 3000) {
         message.value = message.value.substring(0, 3000)
     }
 
     const div = document.createElement('div');
-    div.classList.add('row')
-    div.classList.add('me-0')
+    div.classList.add('row', 'me-0')
     div.innerHTML = `
 
     <div class="ms-auto card you shadow">
@@ -64,8 +59,7 @@ chat.addEventListener('submit', event => {
     </div>
     `
 
-    if (!message.value == '') {
-
+    if (!message.value == '') {        
         socket.emit('send-message', {
             message: message.value,
             self: username.value
@@ -73,27 +67,21 @@ chat.addEventListener('submit', event => {
         chatPanel.appendChild(div);
         message.value = ''
     }
-
 })
 
 
 
 socket.on('user-connected', name => {
-    console.log(name);
     const div = document.createElement('div');
-    div.classList.add('text-center')
-    div.classList.add('join')
+    div.classList.add('text-center', 'join')
     div.innerText = `${name} Joined`
     chatPanel.appendChild(div);
 })
 
 
-socket.on('disconnected', name => {
-
+socket.on('disconnected', name => {   
     const div = document.createElement('div');
-    div.classList.add('text-center')
-    div.classList.add('join')
+    div.classList.add('text-center', 'join')
     div.innerText = `${name} left`
     chatPanel.appendChild(div);
-
 })
